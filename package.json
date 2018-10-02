@@ -1,33 +1,19 @@
 {
-  "scripts": {
-    "lint": "eslint .",
-    "flow": "flow",
-    "pretest": "yarn lint",
-    "test": "yarn test:android && yarn test:ios",
-    "test:ci": "JEST_JUNIT_OUTPUT=test-results/jest-android.xml yarn test:android --ci --testResultsProcessor='jest-junit' && JEST_JUNIT_OUTPUT=test-results/jest-ios.xml yarn test:ios --ci --testResultsProcessor='jest-junit'",
-    "test:coverage": "jest --coverage --coverageDirectory test-results/coverage --collectCoverageOnlyFrom packages/**/*",
-    "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
-    "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
-    "test:watch": "babel-node scripts/test --watch",
-    "prepublishOnly": "yarn test",
-    "lerna-publish": "lerna publish --conventional-commits",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js}": [
-      "eslint --fix .",
-      "git add"
-    ],
-    "*.{json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "engines": {
-    "node": ">= 6.0.0"
-  },
-  "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
-  "contributors": [],
+  "name": "react-native-version-check",
+  "version": "4.0.0",
+  "description": "A version checker for react-native applications",
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "android",
+    "ios",
+    "version check",
+    "version",
+    "app version",
+    "market version",
+    "app store version"
+  ],
+  "license": "MIT",
   "homepage": "https://github.com/kimxogus/react-native-version-check",
   "repository": {
     "type": "git",
@@ -36,42 +22,27 @@
   "bugs": {
     "url": "https://github.com/kimxogus/react-native-version-check/issues"
   },
-  "devDependencies": {
-    "@types/semver": "^5.5.0",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.1.2",
-    "babel-jest": "^22.0.4",
-    "babel-preset-es2015": "^6.24.1",
+  "files": [
+    "android",
+    "ios",
+    "src",
+    "builder.js",
+    "index.js",
+    "LICENSE",
+    "react-native-version-check.podspec",
+    "README.md"
+  ],
+  "dependencies": {
     "babel-preset-react-native": "^4.0.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.1.3",
-    "eslint": "^4.14.0",
-    "eslint-config-aroundus": "^1.1.0",
-    "eslint-config-react-native": "^2.0.0",
-    "eslint-plugin-react-native": "^3.2.0",
-    "flow-bin": "^0.66.0",
-    "flow-typed": "^2.3.0",
-    "husky": "^0.14.3",
-    "isomorphic-fetch": "^2.2.1",
-    "jest": "^22.0.4",
-    "jest-junit": "^3.6.0",
-    "lerna": "^2.5.1",
-    "lint-staged": "^7.0.0",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.11.1",
-    "promise": "^8.0.1"
+    "lodash.isfunction": "^3.0.9",
+    "lodash.isnil": "^4.0.0",
+    "lodash.pick": "^4.4.0",
+    "semver": "^5.5.0"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    },
-    "testPathIgnorePatterns": [
-      "[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
-    ],
-    "automock": false,
-    "setupFiles": [
-      "./setupJest.js"
-    ]
+  "devDependencies": {
+    "react-native": "^0.48.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.48.0"
   }
 }
